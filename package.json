@@ -1,0 +1,20 @@
+{
+  "name": "api-productos",
+  "version": "1.0.0",
+  "description": "Api de productos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikelEngel/api-prodcutos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikelEngel/api-prodcutos/issues"
+  },
+  "homepage": "https://github.com/MikelEngel/api-prodcutos#readme"
+}
