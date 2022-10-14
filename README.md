@@ -12,4 +12,7 @@ crear en la raíz un archivo .env que contendrá la información de example.env
 PORT = #Puerto en el que corre el servidor.
 NOMBRE = #Nombre para un mensaje de bienvenida.
 ```
-
+Para correr ejecuta
+```bash
+npm start
+```
