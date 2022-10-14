@@ -90,6 +90,55 @@ app.get("/rueda", (req, res) => {
     res.json({ ruedas });
 })
 
+//! UPDATE - PUT
+app.put("/estante/:modelo", (req, res) => {
+    const indice = estantes.findIndex ((estante) => estante.modelo === req.params.modelo);
+    if (indice === -1){
+        res.json({error: 'No se encontró el modelo de estante'});
+        return;
+    }
+
+    const { 
+        modelo = estantes[indice].modelo,
+        producto = estantes[indice].producto, 
+        marca = estantes[indice].marca,
+        precio = estantes[indice].precio,
+    } = req.body;
+
+    estantes[indice] = {
+        modelo,
+        producto,
+        marca,
+        precio,
+    };
+
+    res.json ({estanteEditado: estantes[indice], todosEstantes: estantes}); 
+});
+
+
+//!DELETE 
+app.delete("/estante/:indice", function (req, res) {
+    const [eliminado] = estantes.splice(+req.params.indice, 1);
+    if (!eliminado) {
+        res.json({error: "No existe el elemento"});
+        return;
+    }
+    res.json({
+        eliminado,
+        estantes,
+    });
+})
+
+
+app.put("/rueda/:modelo", (req, res) => {
+    const indice = estantes.findIndex ((rueda) => rueda.modelo === req.params.modelo);
+    if (indice === -1){
+        res.json({error: 'No se encontró el modelo de rueda'});
+    }
+    res.json ({rueda: ruedas[indice]});
+});
+
+
 
 //! 5. Levantar servidor.
 
