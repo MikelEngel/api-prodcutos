@@ -8,6 +8,24 @@
 
 
 
+const productos = [
+    {
+        modelo: "HODWR01",
+        producto: "Estante cromado",
+        marca: "HOD",
+        precio: "$ 1",
+    },
+
+    {
+        modelo: "RTR12X3C",
+        producto: "Rueda tipo rayo",
+        marca: "HOD",
+        precio: "$ 2",
+    },
+]
+
+
+
 //! 1. Importar todas nuestras bibliotecas
 
 const express = require ('express');
@@ -25,7 +43,21 @@ app.use(express.json());
 app.get ("/",(req, res)=>{
     res.json({mensaje: 'Hola'})
 });
-app.post
+
+//! CREATE - POST
+app.post("/producto", (req, res)=>{
+    const { modelo, producto, marca, precio } = req.body;
+    productos.push( modelo, producto, marca, precio );
+    res.json({mensaje: "Producto registrado", data: mascotas});
+})
+
+
+//! READ - GET
+app.get("/producto", (req, res) => {
+    console.log("GET:", req.body);
+    res.json({ productos });
+});
+
 
 //! 5. Levantar servidor.
 
