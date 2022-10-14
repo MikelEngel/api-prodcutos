@@ -8,19 +8,39 @@
 
 
 
-const productos = [
+const estantes = [
     {
         modelo: "HODWR01",
-        producto: "Estante cromado",
+        producto: "Estante cromado 3 niveles",
         marca: "HOD",
-        precio: "$ 1",
+        precio: 1,
     },
 
     {
-        modelo: "RTR12X3C",
-        producto: "Rueda tipo rayo",
+        modelo: "HODWR01",
+        producto: "Estante cromado 4 niveles",
         marca: "HOD",
-        precio: "$ 2",
+        precio: 2,
+    },
+]
+
+const ruedas = [
+    {
+        modelo: "RTR9X2C05",
+        producto: "Rueda tipo rayo",
+        medidas: "9x2 pulgadas",
+        color: "azul",
+        marca: "HOD",
+        precio: 1,
+    },
+
+    {
+        modelo: "RTR12X3",
+        producto: "Rueda tipo rayo",
+        medidas: "12x3 pulgadas",
+        color: "rojo",
+        marca: "HOD",
+        precio: 2,
     },
 ]
 
@@ -45,18 +65,30 @@ app.get ("/",(req, res)=>{
 });
 
 //! CREATE - POST
-app.post("/producto", (req, res)=>{
+app.post("/estante", (req, res)=>{
     const { modelo, producto, marca, precio } = req.body;
-    productos.push( modelo, producto, marca, precio );
-    res.json({mensaje: "Producto registrado", data: mascotas});
+    estantes.push( modelo, producto, marca, precio );
+    res.json({mensaje: "Producto registrado", data: estantes});
+})
+
+app.post("/rueda", (req, res)=>{
+    const { modelo, producto, medidas, color, marca, precio } = req.body;
+    ruedas.push ( modelo, producto, medidas, color, marca, precio );
+    res.json({mensaje: "Rueda registrada", data: ruedas})
+
 })
 
 
 //! READ - GET
-app.get("/producto", (req, res) => {
+app.get("/estante", (req, res) => {
     console.log("GET:", req.body);
-    res.json({ productos });
+    res.json({ estantes });
 });
+
+app.get("/rueda", (req, res) => {
+    console.log("GET:", req.body);
+    res.json({ ruedas });
+})
 
 
 //! 5. Levantar servidor.
